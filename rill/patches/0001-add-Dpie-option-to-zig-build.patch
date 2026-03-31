@@ -1,0 +1,33 @@
+From 3caf9bcba232fccad8527f736e485c4d4951b376 Mon Sep 17 00:00:00 2001
+From: aniruddhgutta <aniruddhgutta@disroot.org>
+Date: Wed, 1 Apr 2026 00:10:24 +0530
+Subject: [PATCH] Add '-Dpie' option to build.zig
+
+---
+ build.zig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build.zig b/build.zig
+index 47aa66c..7843f3b 100644
+--- a/build.zig
++++ b/build.zig
+@@ -4,7 +4,7 @@ const wayland = @import("wayland");
+ pub fn build(b: *std.Build) void {
+     const target = b.standardTargetOptions(.{});
+     const optimize = b.standardOptimizeOption(.{});
+-
++    const pie = b.option(bool, "pie", "Build with PIE") orelse false;
+     const scanner = wayland.Scanner.create(b, .{});
+     scanner.addCustomProtocol(b.path("protocol/river-window-management-v1.xml"));
+     scanner.addCustomProtocol(b.path("protocol/river-xkb-bindings-v1.xml"));
+@@ -28,6 +28,7 @@ pub fn build(b: *std.Build) void {
+             },
+         }),
+     });
++    exe.pie = pie;
+     exe.root_module.linkSystemLibrary("wayland-client", .{});
+ 
+     b.installArtifact(exe);
+-- 
+2.52.0
+
