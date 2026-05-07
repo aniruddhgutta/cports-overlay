@@ -1,8 +1,7 @@
 pkgname = "wiremix"
-pkgver = "0.9.0"
+pkgver = "0.10.0"
 pkgrel = 0
 build_style = "cargo"
-make_build_env = {"VERGEN_GIT_DESCRIBE": pkgver}
 hostmakedepends = [
     "cargo-auditable",
     "pkgconf",
@@ -15,12 +14,8 @@ pkgdesc = "TUI audio mixer for PipeWire"
 license = "MIT OR Apache-2.0"
 url = "https://github.com/tsowell/wiremix"
 source = f"{url}/archive/refs/tags/v{pkgver}.tar.gz"
-sha256 = "9fd8979fa3bc260a80d170c30041ab2aeea26273439bac8ce928a9405ce1d0f5"
+sha256 = "dfb165ff664b804099c5592fd26d2b03d78e67069522bc5d3d8ef75a19505adf"
 hardening = ["vis", "cfi"]
-
-
-def post_patch(self):
-    self.do("cargo", "rm", "--build", "vergen-git2")
 
 
 def post_install(self):

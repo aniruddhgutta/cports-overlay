@@ -1,5 +1,5 @@
 pkgname = "nwg-look"
-pkgver = "1.0.6"
+pkgver = "1.1.0"
 pkgrel = 0
 build_style = "go"
 hostmakedepends = [
@@ -14,7 +14,7 @@ pkgdesc = "GTK3 settings editor adapted to work in the wlroots environment"
 license = "MIT"
 url = "https://github.com/nwg-piotr/nwg-look"
 source = f"{url}/archive/refs/tags/v{pkgver}.tar.gz"
-sha256 = "ddaba674253fbbf8f3ee7392315e51408af445adb85ed4b0f70e50301801720d"
+sha256 = "fa00b755246f8fcaf0058e54b0ec0013b43db065280de73fdae4b470359d31d9"
 
 
 def install(self):
